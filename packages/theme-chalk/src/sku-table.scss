@@ -1,0 +1,73 @@
+.jui-sku-container {
+    .example {
+      .code-area {
+        width: 100%;
+        height: 300px;
+        padding: 20px;
+        line-height: 1.6;
+      }
+    }
+    .stock-table {
+      margin: 14px 0;
+      td,
+      th {
+        padding: 4px 10px;
+      }
+      th {
+        line-height: 30px;
+        background-color: #f3f6fb;
+      }
+      .link {
+        cursor: pointer;
+        color: #0088ee;
+        font-size: 13px;
+        margin-left: 6px;
+      }
+      .wh-foot {
+        line-height: 30px;
+        .label {
+          display: inline-block;
+          vertical-align: top;
+        }
+        .set-list {
+          display: inline-block;
+          vertical-align: top;
+          font-size: 0;
+          .set-item {
+            display: inline-block;
+            vertical-align: top;
+            margin-left: 15px;
+            font-size: 13px;
+            cursor: pointer;
+            color: #0088ee;
+          }
+        }
+        .set-form {
+          display: inline-block;
+          margin-left: 10px;
+          .el-input {
+            display: inline-block;
+            width: 120px;
+          }
+          .set-btn {
+            display: inline-block;
+            padding: 0 2px;
+            font-size: 15px;
+            cursor: pointer;
+            &.blue {
+              color: #0088ee;
+            }
+            &.red {
+              color: #cc0000;
+            }
+          }
+        }
+        .right {
+          float: right;
+        }
+        .text {
+          font-size: 13px;
+        }
+      }
+    }
+  }

@@ -1,0 +1,45 @@
+{
+    "开发指南": [
+      {
+        "name": "site-index",
+        "path": "/"
+      },
+      {
+        "name": "introduce",
+        "path": "/introduce",
+        "desc": "介绍"
+      },
+      {
+        "name": "start",
+        "path": "/start",
+        "desc": "快速上手"
+      },
+      {
+        "name": "contribute",
+        "path": "/contribute",
+        "desc": "开发指南"
+      },
+      {
+        "name": "index",
+        "path": "/index",
+        "type": "pages"
+      }
+    ],
+    "组件": [
+      {
+        "desc": "基础组件",
+        "items": [
+        ]
+      },
+      {
+        "desc": "拓展组件",
+        "items": [
+          {
+            "desc": "柱状图",
+            "name": "Bar",
+            "path": "/bar"
+          }
+        ]
+      }
+    ]
+  }

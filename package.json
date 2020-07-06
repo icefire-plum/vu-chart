@@ -1,0 +1,79 @@
+{
+  "name": "vu-chart",
+  "version": "0.0.7",
+  "private": false,
+  "author": "liyang <1028247921@qq.com>",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "build:docs": "vue-cli-service build",
+    "build:entry": "node build/build-entry.js",
+    "clean": "rimraf lib",
+    "build:theme": "gulp build --gulpfile packages/theme-chalk/gulpfile.js && cp-cli packages/theme-chalk/lib lib/theme-chalk",
+    "lib": "npm run clean && webpack --config config/webpack.conf.js && webpack --config config/webpack.common.js && webpack --config config/webpack.component.js && npm run build:theme",
+    "new:comp": "node build/create-comp.js && node build/build-entry.js",
+    "del:comp": "node build/delete-comp.js && node build/build-entry.js",
+    "publish:docs": "node build/publish-docs.js"
+  },
+  "main": "lib/join-ui.common.js",
+  "dependencies": {
+    "core-js": "^3.6.4",
+    "chalk": "^4.1.0",
+    "vue": "^2.6.11"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^4.3.1",
+    "@vue/cli-plugin-eslint": "^4.3.1",
+    "@vue/cli-service": "^4.3.1",
+    "babel-eslint": "^10.1.0",
+    "babel-plugin-import": "^1.13.0",
+    "clipboard": "^2.0.6",
+    "cp-cli": "^2.0.0",
+    "echarts": "^4.8.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "gh-pages": "^2.2.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-cssmin": "^0.2.0",
+    "gulp-sass": "^4.1.0",
+    "highlight.js": "^9.18.1",
+    "markdown-it-container": "^2.0.0",
+    "markdown-it-decorate": "^1.2.2",
+    "markdown-it-task-checkbox": "^1.0.6",
+    "node-sass": "^4.14.1",
+    "rimraf": "^3.0.2",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.2.1",
+    "uppercamelcase": "^3.0.0",
+    "vue-loader": "^15.9.2",
+    "vue-markdown-loader": "^2.4.1",
+    "vue-router": "^3.1.6",
+    "vue-template-compiler": "^2.6.11",
+    "webpack-cli": "^3.3.11"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "rules": {},
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
+}
