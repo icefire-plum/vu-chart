@@ -53,7 +53,8 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 
 ---
-
+## 按需引入
+import V${componentName} from 'vu-chart/lib/StereoscopicBar'
 
 ## 如何使用
 <div class="demo-block">

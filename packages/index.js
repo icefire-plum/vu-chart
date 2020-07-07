@@ -1,10 +1,12 @@
 /* eslint-disable */
 // This file is auto gererated by build/build-entry.js
 import Bar from './Bar'
+import StereoscopicBar from './StereoscopicBar'
 const version = '0.0.7'
 // 存储组件列表
 const components = [
-  Bar
+  Bar,
+  StereoscopicBar
 ]
 // 定义 install 方法，接收 Vue 作为参数。如果使用 use 注册插件，则所有的组件都将被注册
 const install = Vue => {
@@ -25,6 +27,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 export default {
   install,
   version,
-  Bar
+  Bar,
+  StereoscopicBar
 }
 

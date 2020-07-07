@@ -38,6 +38,11 @@
             "desc": "柱状图",
             "name": "Bar",
             "path": "/bar"
+          },
+          {
+            "desc": "立体柱状图",
+            "name": "StereoscopicBar",
+            "path": "/stereoscopic-bar"
           }
         ]
       }
