@@ -1,69 +1,28 @@
+const fromCamelCase = (str, separator = '-') =>
+  str
+    .replace(/([a-z\d])([A-Z])/g, '$1' + separator + '$2')
+    .replace(/([A-Z]+)([A-Z][a-z\d]+)/g, '$1' + separator + '$2')
+    .toLowerCase();
+
 module.exports = {
-    vueTemplate: componentName => {
+    mdDocs: (chartName) => {
 
-        componentName = componentName.charAt(0).toLowerCase() + componentName.slice(1)
-        return `<template>
-
-  <div class="v-${componentName}">
-
-    ${componentName}
-
-  </div>
-</template>
-
-<script>
-export default {
-  name: 'v-${componentName}', 
-
-  data () {
-
-    return {
-    }
-
-  }, 
-
-  props: {
-
-  }, 
-
-  methods: {}
-}
-</script>
-`
-    },
-    entryTemplate: componentName => {
-
-        return `import ${componentName} from './${componentName}'
-
-${componentName}.install = function (Vue) {
-  Vue.component(${componentName}.name, ${componentName})
-}
-
-export default ${componentName}
-
-if (typeof window !== 'undefined' && window.Vue) {
-  window.Vue.component(${componentName}.name, ${componentName})
-}
-`
-    },
-    mdDocs: (title, componentName) => {
-      componentName = componentName.toLowerCase()
-        return `# ${title}
-
+        return `
+# ${chartName}图表
 
 
 ---
 ## 按需引入
-import V${componentName} from 'vu-chart/lib/StereoscopicBar'
+import V${fromCamelCase(chartName)} from 'vu-chart/lib/${chartName}'
 
 ## 如何使用
 <div class="demo-block">
-  <v-${componentName} style="width:80%;height:400px">
+  <v-${fromCamelCase(chartName)} style="width:80%;height:400px">
 </div>
 
 :::demo
 \`\`\`html
-  <v-${componentName} style="width:80%;height:400px">
+  <v-${fromCamelCase(chartName)} style="width:80%;height:400px">
 \`\`\`
 :::
 
@@ -76,20 +35,50 @@ import V${componentName} from 'vu-chart/lib/StereoscopicBar'
 |-----|-----|-----|-----|-----|
 | -   | -   | -   | -   | -   |
 
-`
+      `
     },
-    entryTemplate: componentName => {
-        return `import ${componentName} from './${componentName}.vue'
+    chartCoreTemplate: chartName => {
+      return `
+      // 引入样本组件
+      import chart from '../../base-chart/components/chart'
+      import 'echarts/lib/chart/~~'
+      
+      // 默认配置
+      import option from './option.js'
+      
+      
+      
+      export default {
+        name: 'V${chartName}',
+        mixins: [chart, option]
+      }
+      `
+    },
+    chartOptionTemplate: () => {
+      return `
+      export default {
+        data() {
+            return {
+                defaultOpt: {
+                }
+            }
+        }
+    }
+      `
+    },
+    chartEntryTemplate: (chartName) => {
+      return `
+        import ${chartName} from './${chartName}.js'
 
-  ${componentName}.install = function(Vue) {
-    Vue.component(${componentName}.name, ${componentName})
-}
+        ${chartName}.install = function(Vue) {
+            Vue.component(${chartName}.name, ${chartName})
+        }
 
-export default ${componentName}
+        export default ${chartName}
 
-if (typeof window !== 'undefined' && window.Vue) {
-    window.Vue.component(${componentName}.name, ${componentName})
-}
-`
+        if (typeof window !== 'undefined' && window.Vue) {
+            window.Vue.component(${chartName}.name, ${chartName})
+        }
+      `
     }
 }

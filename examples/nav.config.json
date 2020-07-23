@@ -27,22 +27,32 @@
     ],
     "组件": [
       {
-        "desc": "基础组件",
+        "desc": "环状图",
         "items": [
+          {
+            "desc": "中空环状图",
+            "name": "HollowPie",
+            "path": "/pie/hollow"
+          },
+          {
+            "desc": "圆环图",
+            "name": "Circle",
+            "path": "/pie/circle"
+          }
         ]
       },
       {
-        "desc": "拓展组件",
+        "desc": "柱状图",
         "items": [
           {
-            "desc": "柱状图",
-            "name": "Bar",
-            "path": "/bar"
+            "desc": "基础柱状图",
+            "name": "BaseBar",
+            "path": "/bar/base"
           },
           {
             "desc": "立体柱状图",
             "name": "StereoscopicBar",
-            "path": "/stereoscopic-bar"
+            "path": "/bar/stereoscopic"
           }
         ]
       }

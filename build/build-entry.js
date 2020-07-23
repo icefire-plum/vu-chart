@@ -7,7 +7,6 @@ const uppercamelize = require('uppercamelcase')
 // 拿到packages目录下的所以含组件的文件名字
 const Components = require('./get-components')()
 const packageJson = require('../package.json')
-
 const version = process.env.VERSION || packageJson.version
 const tips = `/* eslint-disable */
 // This file is auto gererated by build/build-entry.js`
@@ -16,11 +15,14 @@ const tips = `/* eslint-disable */
 
 function buildPackagesEntry() {
   const uninstallComponents = []
-
-  const importList = Components.map(
-    name => `import ${uppercamelize(name)} from './${name}'`
-  )
-  const exportList = Components.map(name => `${uppercamelize(name)}`)
+  let importList = []
+  let exportList = []
+  Object.keys(Components).map(item => {
+    Components[item].forEach(name => {
+      importList.push(`import ${uppercamelize(name)} from './${item}/${name}'`)
+      exportList.push(`${uppercamelize(name)}`)
+    })
+  })
   const intallList = exportList.filter(
     name => !~uninstallComponents.indexOf(uppercamelize(name))
   )

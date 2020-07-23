@@ -9,28 +9,40 @@ const log = message => console.log(chalk.green( `${message}` ))
 const successLog = message => console.log(chalk.blue( `${message}` ))
 const errorLog = error => console.log(chalk.red( `${error}` ))
 
-log('请输入要删除的组件名称, 形如 demo 或者 demo-test')
+log('请输入要删除的图表类型和图表名称, 形如 bar:base-bar 或者pie: basePie')
 process.stdin.on('data', async chunk => {
-    let inputName = String(chunk).trim().toString()
-    inputName = uppercamelize(inputName)
-    const componentDirectory = resolve('../packages', inputName)
+    let input = String(chunk).trim().toString()
+    // 拆分输入得到类型名称和图表名称
+    const inputArr = input.split(':')
+    let inputFileName = inputArr[0]
+    let chartName = inputArr[1]
+    // 输入名称格式 test-test--> TestTest
+    inputFileName = uppercamelize(inputFileName)
+    chartName = uppercamelize(chartName)
+    const fileDirectory = resolve('../packages', inputFileName)
+    const chartDirectory = resolve(`../packages/${inputFileName}`, chartName)
 
-    const hasComponentDirectory = fs.existsSync(componentDirectory)
+    const hasChartDirectory = fs.existsSync(chartDirectory)
 
     const docsDirectory = resolve('../examples/docs')
-    const docsMdName = resolve(docsDirectory, `${inputName}.md` )
-    if (inputName) {
+    const docsMdName = resolve(docsDirectory, `${chartName}.md` )
+    if (inputFileName && chartName) {
 
-        if (hasComponentDirectory) {
-            log( `删除 component 目录 ${componentDirectory}` )
-            await removePromise(componentDirectory)
-            successLog( `已删除 ${inputName} 组件目录` )
-
-            log( `删除 component 文档 ${docsMdName}` )
+        if (hasChartDirectory) {
+            log( `删除 图表 目录 ${chartDirectory}` )
+            await removePromise(chartDirectory)
+            successLog( `已删除 ${chartName} 图表目录` )
+            try {
+                fs.rmdirSync(fileDirectory)
+                successLog(`${inputFileName}已经变成空文件夹，一并被删除`)
+            } catch (error) {
+                
+            }
+            log( `删除 图表 文档 ${docsMdName}` )
             fs.unlink(docsMdName)
-            successLog( `已删除 ${inputName} 组件说明文档` )
+            successLog( `已删除 ${chartName} 组件说明文档` )
         } else {
-            errorLog( `${inputName}组件目录不存在` )
+            errorLog( `${chartName}组件目录不存在` )
             return
         }
 

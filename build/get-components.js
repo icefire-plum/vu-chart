@@ -7,12 +7,18 @@ const path = require('path');
 const excludes = [
   'index.js',
   'theme-chalk',
+  'base-chart',
   'mixins',
   'utils',
   '.DS_Store'
 ];
 
 module.exports = function () {
-  const dirs = fs.readdirSync(path.resolve(__dirname, '../packages'));
-  return dirs.filter(dirName => excludes.indexOf(dirName) === -1);
+  let dirs = fs.readdirSync(path.resolve(__dirname, '../packages'))
+  dirs = dirs.filter(dirName => excludes.indexOf(dirName) === -1)
+  let comps = {}
+  dirs.forEach(item => {
+    comps[item] = fs.readdirSync(path.resolve(__dirname, `../packages/${item}`))
+  })
+  return comps
 };
