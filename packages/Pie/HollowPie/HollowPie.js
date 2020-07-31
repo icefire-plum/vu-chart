@@ -1,6 +1,6 @@
 
       // 引入样本组件
-      import chart from '../../base-chart/components/chart'
+      import chart from '../../base-chart/components/chart.vue'
       import 'echarts/lib/chart/pie'
       
       // 默认配置

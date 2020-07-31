@@ -11,7 +11,7 @@
     "build:entry": "node build/build-entry.js",
     "clean": "rimraf lib",
     "build:theme": "gulp build --gulpfile packages/theme-chalk/gulpfile.js && cp-cli packages/theme-chalk/lib lib/theme-chalk",
-    "lib": "npm run clean && webpack --config config/webpack.conf.js && webpack --config config/webpack.common.js && webpack --config config/webpack.component.js && npm run build:theme",
+    "lib": "npm run clean && webpack --config config/webpack.conf.js",
     "new:comp": "node build/create-comp.js && node build/build-entry.js",
     "del:comp": "node build/delete-comp.js && node build/build-entry.js",
     "publish:docs": "node build/publish-docs.js"

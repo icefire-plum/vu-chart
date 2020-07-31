@@ -17,12 +17,18 @@ function buildPackagesEntry() {
   const uninstallComponents = []
   let importList = []
   let exportList = []
-  Object.keys(Components).map(item => {
-    Components[item].forEach(name => {
-      importList.push(`import ${uppercamelize(name)} from './${item}/${name}'`)
-      exportList.push(`${uppercamelize(name)}`)
-    })
+  Components.forEach(item => {
+    const name = item.split('/')[1]
+    importList.push(`import ${uppercamelize(name)} from './${item}'`)
+    exportList.push(`${uppercamelize(name)}`)
   })
+  // Object.keys(Components).map(item => {
+  //   console.log('test', Components)
+  //   Components[item].forEach(name => {
+  //     importList.push(`import ${uppercamelize(name)} from './${item}/${name}'`)
+  //     exportList.push(`${uppercamelize(name)}`)
+  //   })
+  // })
   const intallList = exportList.filter(
     name => !~uninstallComponents.indexOf(uppercamelize(name))
   )

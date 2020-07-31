@@ -4,7 +4,7 @@
 
 ---
 ## 按需引入
-import Vhollow-pie from 'vu-chart/lib/HollowPie'
+import VhollowPie from 'vu-chart/lib/Pie/HollowPie'
 
 ## 示例
 <div class="demo-block">

@@ -26,6 +26,8 @@ process.stdin.on('data', async chunk => {
 
     const docsDirectory = resolve('../examples/docs')
     const docsMdName = resolve(docsDirectory, `${chartName}.md` )
+    const demosDirectory = resolve('../examples/demos')
+    const demosName = resolve(demosDirectory, `${chartName}Demo.vue` )
     if (inputFileName && chartName) {
 
         if (hasChartDirectory) {
@@ -41,6 +43,9 @@ process.stdin.on('data', async chunk => {
             log( `删除 图表 文档 ${docsMdName}` )
             fs.unlink(docsMdName)
             successLog( `已删除 ${chartName} 组件说明文档` )
+            log( `删除 图表 demo ${demosName}` )
+            fs.unlink(demosName)
+            successLog( `已删除 ${chartName} 组件demo` )
         } else {
             errorLog( `${chartName}组件目录不存在` )
             return

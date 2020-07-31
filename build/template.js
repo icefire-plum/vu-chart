@@ -5,7 +5,7 @@ const fromCamelCase = (str, separator = '-') =>
     .toLowerCase();
 
 module.exports = {
-    mdDocs: (chartName) => {
+    mdDocs: (inputFileName,chartName) => {
 
         return `
 # ${chartName}图表
@@ -13,16 +13,32 @@ module.exports = {
 
 ---
 ## 按需引入
-import V${fromCamelCase(chartName)} from 'vu-chart/lib/${chartName}'
+import V${chartName} from 'vu-chart/lib/${inputFileName}/${chartName}'
+
+## 示例
+<div class="demo-block">
+  <${chartName}Demo />
+</div>
 
 ## 如何使用
-<div class="demo-block">
-  <v-${fromCamelCase(chartName)} style="width:80%;height:400px">
-</div>
 
 :::demo
 \`\`\`html
-  <v-${fromCamelCase(chartName)} style="width:80%;height:400px">
+  <v-${fromCamelCase(chartName)} style="width:80%;height:400px" :vOpt="vOpt" />
+\`\`\`
+\`\`\`js
+  <script>
+    export default {
+        ...
+        data() {
+            return {
+              vOpt: {
+              }
+            }
+        }
+        
+    }
+  </script>
 \`\`\`
 :::
 
@@ -37,6 +53,25 @@ import V${fromCamelCase(chartName)} from 'vu-chart/lib/${chartName}'
 
       `
     },
+    chartDemo: (chartName) => {
+      return `
+  <template>
+    <v-${fromCamelCase(chartName)} style="width:80%;height:400px" :vOpt="vOpt" />
+  </template>
+  
+  <script>
+    export default {
+      name: '${chartName}Demo',
+      data() {
+          return {
+              vOpt: {
+              }
+          }
+      }
+    }
+  </script>
+      `
+    },
     chartCoreTemplate: chartName => {
       return `
       // 引入样本组件
@@ -45,12 +80,16 @@ import V${fromCamelCase(chartName)} from 'vu-chart/lib/${chartName}'
       
       // 默认配置
       import option from './option.js'
+      import mergeVopt from './mergeVopt'
       
       
       
       export default {
         name: 'V${chartName}',
-        mixins: [chart, option]
+        mixins: [chart, option],
+        created() {
+          this.vOption = mergeVopt(this.vOpt)
+        }
       }
       `
     },
@@ -64,6 +103,21 @@ import V${fromCamelCase(chartName)} from 'vu-chart/lib/${chartName}'
             }
         }
     }
+      `
+    },
+    chartMergeVoptTemplate: () => {
+      return `
+    /**
+     * 自定义配置
+     */
+    const mergeVopt = (vOpt) => {
+      const option = {
+      }
+      return option
+    }
+    
+    
+    export default mergeVopt
       `
     },
     chartEntryTemplate: (chartName) => {

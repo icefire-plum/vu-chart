@@ -4,7 +4,7 @@
 
 ---
 ## 按需引入
-import Vcircle from 'vu-chart/lib/Circle'
+import Vcircle from 'vu-chart/lib/Pie/Circle'
 
 ## 示例
 <div class="demo-block">

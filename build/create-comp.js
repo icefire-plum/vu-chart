@@ -12,7 +12,9 @@ const {
     mdDocs,
     chartCoreTemplate,
     chartOptionTemplate,
-    chartEntryTemplate
+    chartEntryTemplate,
+    chartMergeVoptTemplate,
+    chartDemo
 } = require('./template')
 
 const generateFile = (path, data) => {
@@ -63,6 +65,7 @@ process.stdin.on('data', async chunk => {
         const chartDirectory = resolve(`../packages/${inputFileName}`, chartName)
         const chartCore = resolve(chartDirectory, `${chartName}.js`)
         const chartOptin= resolve(chartDirectory, `option.js`)
+        const chartMergeVopt= resolve(chartDirectory, `mergeVopt.js`)
         const chartEntry= resolve(chartDirectory, `index.js`)
         const hasChart = fs.existsSync(chartDirectory)
         if (!hasChart) {
@@ -79,31 +82,40 @@ process.stdin.on('data', async chunk => {
             await generateFile(chartCore, chartCoreTemplate(chartName))
             log( `生成 图表默认配置 文件 option.js` )
             await generateFile(chartOptin, chartOptionTemplate())
+            log( `生成 图表自定义配置 文件 mergeVopt.js` )
+            await generateFile(chartMergeVopt, chartMergeVoptTemplate())
             log( `生成 图表入口 文件 index.js` )
             await generateFile(chartEntry, chartEntryTemplate(chartName))
             successLog('生成 图表 成功')
         } catch (e) {
             errorLog(e.message)
         } 
+
+         // 这里生成自定义组件说明文档
+        const docsDirectory = resolve('../examples/docs')
+        const docsMdName = resolve(docsDirectory, `${chartName}.md` )
+         // 这里生成自定义组件demo
+        const demosDirectory = resolve('../examples/demos')
+        const demosName = resolve(demosDirectory, `${chartName}Demo.vue` )
+
+        try {
+            log( `生成 图表 文档 ${docsMdName}` )
+            await generateFile(docsMdName, mdDocs(inputFileName, chartName))
+            successLog('生成 图表 文档成功')
+            log(`生成 图表 demo ${demosName}` )
+            await generateFile(demosName, chartDemo(chartName))
+            successLog('生成 图表 demo成功')
+
+        } catch (e) {
+
+            errorLog(e.message)
+
+        }
+        process.stdin.emit('end')
     } else {
         errorLog( `请重新输入组件类型:` )
         return
     }
-    // 这里生成自定义组件说明文档
-    const docsDirectory = resolve('../examples/docs')
-    const docsMdName = resolve(docsDirectory, `${chartName}.md` )
-
-    try {
-        log( `生成 图表 文档 ${docsMdName}` )
-        await generateFile(docsMdName, mdDocs(chartName))
-        successLog('生成 图表 文档成功')
-
-    } catch (e) {
-
-        errorLog(e.message)
-
-    }
-    process.stdin.emit('end')
 })
 
 

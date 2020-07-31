@@ -13,6 +13,9 @@
                     },
                     yAxis: {
                         type: 'value',
+                        splitLine: {
+                            show: false
+                        },
                         axisLine: {
                             lineStyle: {
                                 color: '#ccc'
@@ -20,7 +23,8 @@
                         }
                     },
                     series: [{
-                        type: 'bar'
+                        type: 'bar',
+                        barMaxWidth: '40%'
                     }]
                 }
             }

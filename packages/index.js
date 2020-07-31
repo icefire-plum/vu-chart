@@ -4,7 +4,7 @@ import BaseBar from './Bar/BaseBar'
 import StereoscopicBar from './Bar/StereoscopicBar'
 import Circle from './Pie/Circle'
 import HollowPie from './Pie/HollowPie'
-const version = '0.0.8'
+const version = '0.1.0'
 // 存储组件列表
 const components = [
   BaseBar,

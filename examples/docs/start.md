@@ -15,10 +15,9 @@ npm install vu-chart --save
 ```js
 npm install echarts --save
 ```
-#### vue全局挂载echarts
+#### vue 引入echarts
 ```js
 import echarts from 'echarts'
-Vue.prototype.$echarts = echarts
 ```
 
 
@@ -41,16 +40,34 @@ Vue.use(vuChart)
 
 可以局部注册所需的组件，适用于与其他框架组合使用的场景
 
+在模板中，用 `<v-base-bar></v-base-bar>` 自定义标签的方式使用组件
+
+```html
+<template>
+  <div>
+    <v-base-bar style="width:80%;height:400px" :vOpt="vOpt" />
+  </div>
+</template>
+```
 
 ```.vue
 
 <script>
   ...
-  import vBar from 'vu-chart/lib/Bar.js'
+  import VBaseBar from 'vu-chart/lib/Bar/BaseBar'
   export default {
     ...
+    data() {
+      return {
+        vOpt: {
+          xData: [1, 2, 3, 4, 5, 6],
+          yData: [111, 33, 34, 242, 242, 1000],
+          tooltip: {}
+        }
+      }
+    },
     components: {
-      vBar
+      VBaseBar
     }
     ...
   }
@@ -58,14 +75,7 @@ Vue.use(vuChart)
 ```
 
 
-在模板中，用 `<v-bar></v-bar>` 自定义标签的方式使用组件
 
-```html
-<template>
-  <div>
-    <v-bar></v-bar>
-  </div>
-</template>
-```
+
 
 

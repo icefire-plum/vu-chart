@@ -16,9 +16,12 @@ const excludes = [
 module.exports = function () {
   let dirs = fs.readdirSync(path.resolve(__dirname, '../packages'))
   dirs = dirs.filter(dirName => excludes.indexOf(dirName) === -1)
-  let comps = {}
+  let comps = []
   dirs.forEach(item => {
-    comps[item] = fs.readdirSync(path.resolve(__dirname, `../packages/${item}`))
+    const comDirs = fs.readdirSync(path.resolve(__dirname, `../packages/${item}`))
+    comDirs.forEach(ele => {
+      comps.push(`${item}/${ele}`)
+    })
   })
   return comps
 };

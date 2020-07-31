@@ -5,7 +5,7 @@
 import echarts from 'echarts/lib/echarts'
 
 const getTooltip = (vOpt) => {
-    const { tooltip } = vOpt
+    const { tooltip={} } = vOpt
     return tooltip
 }
 

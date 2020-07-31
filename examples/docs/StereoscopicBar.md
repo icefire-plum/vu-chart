@@ -4,7 +4,7 @@
 
 ---
 ## 按需引入(可选)
-import VStereoscopicBar from 'vu-chart/lib/StereoscopicBar'
+import VStereoscopicBar from 'vu-chart/lib/Bar/StereoscopicBar'
 
 ## 示例
 <div class="demo-block">
