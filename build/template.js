@@ -75,7 +75,7 @@ import V${chartName} from 'vu-chart/lib/${inputFileName}/${chartName}'
     chartCoreTemplate: chartName => {
       return `
       // 引入样本组件
-      import chart from '../../base-chart/components/chart'
+      import chart from '../../base-chart/components/chart.vue'
       import 'echarts/lib/chart/~~'
       
       // 默认配置

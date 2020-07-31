@@ -1,6 +1,6 @@
 {
   "name": "vu-chart",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": false,
   "author": "liyang <1028247921@qq.com>",
   "scripts": {
@@ -14,7 +14,8 @@
     "lib": "npm run clean && webpack --config config/webpack.conf.js",
     "new:comp": "node build/create-comp.js && node build/build-entry.js",
     "del:comp": "node build/delete-comp.js && node build/build-entry.js",
-    "publish:docs": "node build/publish-docs.js"
+    "publish:docs": "node build/publish-docs.js",
+    "publish:npms": "npm run lib && npm publish"
   },
   "main": "lib/join-ui.common.js",
   "dependencies": {
