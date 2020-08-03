@@ -53,6 +53,11 @@
             "desc": "立体柱状图",
             "name": "StereoscopicBar",
             "path": "/bar/stereoscopic"
+          },
+          {
+            "desc": "圆柱柱状图",
+            "name": "CylinderBar",
+            "path": "/bar/cylinder"
           }
         ]
       }

@@ -1,13 +1,15 @@
 /* eslint-disable */
 // This file is auto gererated by build/build-entry.js
 import BaseBar from './Bar/BaseBar'
+import CylinderBar from './Bar/CylinderBar'
 import StereoscopicBar from './Bar/StereoscopicBar'
 import Circle from './Pie/Circle'
 import HollowPie from './Pie/HollowPie'
-const version = '0.1.0'
+const version = '0.1.1'
 // 存储组件列表
 const components = [
   BaseBar,
+  CylinderBar,
   StereoscopicBar,
   Circle,
   HollowPie
@@ -32,6 +34,7 @@ export default {
   install,
   version,
   BaseBar,
+  CylinderBar,
   StereoscopicBar,
   Circle,
   HollowPie
