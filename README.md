@@ -1,6 +1,8 @@
 # vu-chart
 ### 有趣的图表组件库
-https://icefire-plum.github.io/vu-chart/#/
+github文档地址: https://icefire-plum.github.io/vu-chart/#/
+
+码云文档地址: http://icefirejs.gitee.io/vu-chart
 
 github: https://github.com/icefire-plum/vu-chart 
 

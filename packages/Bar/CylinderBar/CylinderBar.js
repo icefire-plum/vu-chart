@@ -2,6 +2,7 @@
       // 引入样本组件
       import chart from '../../base-chart/components/chart.vue'
       import 'echarts/lib/chart/bar'
+      import 'echarts/lib/component/tooltip'
       import 'echarts/lib/chart/pictorialBar'
       
       // 默认配置
