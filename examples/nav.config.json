@@ -58,6 +58,11 @@
             "desc": "圆柱柱状图",
             "name": "CylinderBar",
             "path": "/bar/cylinder"
+          },
+          {
+            "desc": "横向柱状图",
+            "name": "CrossBar",
+            "path": "/bar/Cross"
           }
         ]
       }

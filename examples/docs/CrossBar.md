@@ -1,21 +1,21 @@
 
-# BaseBar图表
+# CrossBar图表
 
 
 ---
 ## 按需引入
-import VBaseBar from 'vu-chart/lib/Bar/BaseBar'
+import VCrossBar from 'vu-chart/lib/Bar/CrossBar'
 
 ## 示例
 <div class="demo-block">
-  <BaseBarDemo />
+  <CrossBarDemo />
 </div>
 
 ## 如何使用
 
 :::demo
 ```html
-  <v-base-bar style="width:80%;height:400px" :vOpt="vOpt" />
+  <v-cross-bar style="width:80%;height:400px" :vOpt="vOpt" />
 ```
 ```js
   <script>
@@ -38,6 +38,7 @@ import VBaseBar from 'vu-chart/lib/Bar/BaseBar'
 
 
 ## Attributes
+
 
 
 
