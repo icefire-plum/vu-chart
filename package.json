@@ -39,7 +39,7 @@
     "gulp-autoprefixer": "^7.0.1",
     "gulp-cssmin": "^0.2.0",
     "gulp-sass": "^4.1.0",
-    "highlight.js": "^9.18.1",
+    "highlight.js": "^10.4.1",
     "markdown-it-container": "^2.0.0",
     "markdown-it-decorate": "^1.2.2",
     "markdown-it-task-checkbox": "^1.0.6",
